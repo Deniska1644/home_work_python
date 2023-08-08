@@ -1,0 +1,90 @@
+#
+# Дополнить телефонный справочник возможностью изменения и удаления данных.
+# Пользователь также может ввести имя или фамилию, и Вы должны реализовать функционал для изменения и удаления данных
+# import os
+#
+# fn = "text.txt"
+#
+#
+# def load_txt():
+#     if os.path.isfile(fn):
+#         with open(fn) as f:
+#             r = f.readlines()
+#             s = []
+#             for line in r:
+#                 s.append(line.split(" "))
+#         return s
+#     s = []
+#     return s
+#
+#
+# def add_obj():
+#     que = ["имя", "фамилия", "отчество", "номер телефона"]
+#     list1 = []
+#     with open(fn, "a+") as f:
+#         for element in que:
+#             a = input(f" введите {element}").lower()
+#             list1.append(a)
+#         f.write(f"{list1} \n")
+#     return s
+#
+#
+# def find_obg():
+#     find = input("кого ищем?")
+#     finder = []
+#     if os.path.isfile(fn):
+#         with open(fn) as f:
+#             r = f.readlines()
+#             for line in r:
+#                 if find in line:
+#                     print(f"совпадение:{line}")
+#                     finder += line
+#         return finder
+#
+#
+# def show_all(s):
+#     a = " "
+#     for element in s:
+#         a = " ".join(element)
+#         print(a.capitalize())
+#     # else:
+#     #     print("в записаной книжке нет записей")
+#
+#
+# def delite(s):
+#     if os.path.isfile(fn):
+#         with open(fn, "r+") as f:
+#             new_list = []
+#             del_element = input("кого хотим удалить?")
+#             for line in f.readlines():
+#                 if del_element not in line:
+#                     new_list.append(line)
+#             else:
+#                 print("такого элемента не найдено")
+#             f.seek(0)
+#             f.writelines(new_list)
+#             print(new_list)
+#             return s
+#
+#
+# def change(s):
+#     find = enumerate(find_obg())
+#     print(find)
+#
+#
+# if __name__ == "__main__":
+#     while True:
+#         s = load_txt()
+#         action = input("1 - добавить \n2 - поиск \n3 - показать всех \n4 - удалить\n5 - изменить\n6 - выход:\n")
+#         if action == "1":
+#             add_obj()
+#         elif action == "2":
+#             find_obg()
+#         elif action == "3":
+#             show_all(s)
+#         elif action == "4":
+#             delite(s)
+#         elif action == "5":
+#             change(s)
+#         elif action == "6":
+#             break
