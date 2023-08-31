@@ -1,0 +1,115 @@
+ЗАДАЧА №2
+# Напишите программу, которая получает целое число и возвращает
+# его шестнадцатеричное строковое представление.
+# Функцию hex используйте для проверки своего результата.
+
+import random
+
+
+def some_funct(number, degree):
+    hex_str = "0123456789ABCDEFAGHIJKLMNOPQRSTUV"
+    result = ""
+    while number > 0:
+        result += hex_str[number % degree]
+        number //= degree
+    return result [::-1]
+
+
+number = random.randint(1,1000)
+degre = int(input("введите в какую систему переводим(до 32)"))
+
+a = some_funct(number,degre)
+print(f" случайное число {number}, в степени {degre} = {a}")
+print(int(a,degre))
+
+
+
+
+ЗАДАЧА 3
+
+# # Напишите программу, которая принимает две строки вида “a/b” -
+# # дробь с числителем и знаменателем. Программа должна возвращать сумму 
+# # и произведение* дробей. Для проверки своего кода используйте модуль fractions.
+
+
+import fractions
+
+def suma (some_list):
+    znam = some_list[1::2]
+    nod = 1
+    list1 = []
+    counter = 0
+    common_numerator = sum(list1)
+    
+    for i in znam:
+        if znam.count(i) != len(znam):
+            nod = nod * i
+        else:
+            nod = znam[0]
+            break
+            
+      
+    for element in some_list[::2]:
+        list1.append(nod/znam[counter]*element)
+        counter+=1
+
+    common_numerator = sum(list1)
+    for element in range(11,1,-1):
+        if common_numerator % element == 0 and nod % element == 0:
+            common_numerator /= element
+            nod /= element
+
+        
+    return f"целочисленный ответ сложения =  {common_numerator/nod} ,\nдробный = {int(common_numerator)}/{int(nod)}"
+    print (list1,nod)
+   
+   
+def multip (some_list):
+    chisl = 1
+    znam = 1
+   
+    for i in some_list[::2]:
+        i *= chisl
+    
+    for i in some_list[1:2]:
+        i *= znam
+        
+    for element in range(11,1,-1):
+        if chisl % element == 0 and znam % element == 0:
+            chisl /= element
+            znam /= element
+    
+    return f"целочисленный ответ умножения =  {chisl/znam} ,\nдробный = {int(chisl)}/{int(znam)}"
+       
+  
+    
+
+
+if __name__=="__main__":
+    some_list = [] 
+    while True:
+        
+        more = int(input("\n 0 = выйти\n 1 = добавить еще \n 2 = сложить \n 3 = умножить"))
+        if more == 0:
+            break
+        if more == 1:
+            some_list.append(int(input("введите числитель")))
+            some_list.append(int(input("введите знаменатель")))
+        if more == 2:
+            print(suma(some_list))
+        if more == 3:
+            print(multip(some_list))
+        
+    
+  
+
+
+
+
+
+
+
+
+
+
+
