@@ -1,0 +1,71 @@
+задача 2
+Дан список повторяющихся элементов. Вернуть список с дублирующимися элементами.
+В результирующем списке не должно быть дубликатов.
+
+import random
+
+
+print(some_list := [random.randint(1,10) for i in range(10)])
+set_list = set(some_list)
+no_double_list = [i for i in set_list if some_list.count(i) >= 2]
+print (no_double_list)
+
+
+Задача №3
+В большой текстовой строке подсчитать количество встречаемых слов и 
+вернуть 10 самых частых. Не учитывать знаки препинания и регистр символов.
+За основу возьмите любую статью из википедии или из документации к языку.
+
+
+def format_text (some_str):
+    new_list = []
+    new_word = ""
+    
+    for element in some_str.split():
+        if element.isalpha():
+            new_list.append(element.lower())
+        else:
+            for alpha in element:
+                if alpha.isalpha():
+                    new_word += alpha
+            new_list.append(new_word.lower())
+    
+    return new_list
+
+
+def create_count_dict (format_some_str):
+    my_dict = {}
+    
+    for item in format_some_str:
+        my_dict[item] = my_dict.get(item,0)+1
+    
+    return my_dict
+    
+
+def find_top_ten(new_dict):
+    bigest = max(new_dict,key = new_dict.get)
+    for i in range(10):
+        bigest = max(new_dict,key = new_dict.get)
+        print(bigest)
+        new_dict.pop(max(new_dict,key = new_dict.get))
+
+
+    return top_ten
+    
+
+    
+if __name__ =="__main__":
+
+    some_str = "aaaaaaaa asdsa  a aa aa, Asfa sss 1213 44 ! ...! fdsd  ddd   ddddd"
+    format_some_str = format_text(some_str)
+    new_dict = create_count_dict(format_some_str)
+    
+    print(find_top_ten(new_dict))
+
+
+
+        
+
+
+
+
