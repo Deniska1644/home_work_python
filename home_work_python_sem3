@@ -38,29 +38,20 @@ def create_count_dict (format_some_str):
     
     for item in format_some_str:
         my_dict[item] = my_dict.get(item,0)+1
-    
-    return my_dict
-    
-
-def find_top_ten(new_dict):
-    bigest = max(new_dict,key = new_dict.get)
-    for i in range(10):
-        bigest = max(new_dict,key = new_dict.get)
-        print(bigest)
-        new_dict.pop(max(new_dict,key = new_dict.get))
+        
+    return sorted(my_dict.items(), key=lambda x:x[1], reverse=True)
 
 
-    return top_ten
-    
-
-    
 if __name__ =="__main__":
 
-    some_str = "aaaaaaaa asdsa  a aa aa, Asfa sss 1213 44 ! ...! fdsd  ddd   ddddd"
+    some_str = "aaaaaaaa asdsa  a aa aa, Asfa sss 1213 44 ! ...! fdsd  ddd   ddddd dd  dddd ddd ddd d d d d d d d d"
     format_some_str = format_text(some_str)
     new_dict = create_count_dict(format_some_str)
     
-    print(find_top_ten(new_dict))
+    for key, value in new_dict[:10]:
+        print(f"{key} - {value}")
+
+
 
 
 
