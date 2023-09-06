@@ -53,6 +53,53 @@ if __name__ =="__main__":
 
 
 
+Задача №4
+# Создайте словарь со списком вещей для похода в качестве ключа и их массой в качестве значения.
+# Определите какие вещи влезут в
+# рюкзак передав его максимальную грузоподъёмность. Достаточно вернуть один допустимый вариант. 
+# *Верните все возможные варианты комплектации рюкзака.
+
+def counter_weight_max(some_bag,weight_bag):
+    new_some_bag = sorted(some_bag.items(),key=lambda x:x[1],reverse=True)
+    answer_list = []
+    max_answer = 0    
+    
+    for i in range(len(new_some_bag)):
+        for element in new_some_bag:
+            if max_answer + element[1] > weight_bag:
+                continue
+            elif max_answer + element[1] == weight_bag:
+                answer_list.append(element)
+                for values in answer_list:
+                    print(*values)
+                print("__________")
+                max_answer = 0
+                new_some_bag.pop(0)
+                answer_list.clear()
+                break
+            else:
+                answer_list.append(element)
+                max_answer += element[1]
+        
+
+if __name__=="__main__":
+    weight_bag = int(input("введите размер сумки"))
+    some_bag = {
+        "палатка":10,
+        "котелок":9,
+        "кошка":8,
+        "собака":7,
+        "компухтер":6,
+        "ахахах":5,
+        "азазаз":4,
+        "dsfsdf":3,
+        "телефон":1
+    }
+    
+    print(counter_weight_max(some_bag,weight_bag))
+
+
+
 
 
         
