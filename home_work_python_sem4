@@ -27,3 +27,25 @@ def some_func(a,b,c):
 if __name__ == "__main__":
     a,b,c = [1,2,"dsfdsf"]
     print(some_func(a,b,c))
+
+
+Задача №3
+# Возьмите задачу о банкомате из семинара 2. 
+# Разбейте её на отдельные операции — функции. Дополнительно сохраняйте 
+# все операции поступления и снятия средств в список.
+
+def replenish():
+    pass
+
+def take_off():
+    pass
+
+if __name__ == "__main__":
+    while True:
+        action = int(input("1.Пополнить\n2.снять\n3.выйти"))
+        if action == 1:
+            replenish()
+        elif action == 2:
+            take_off()
+        elif action == 3:
+            break
