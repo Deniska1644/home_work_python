@@ -9,3 +9,21 @@ def my_func(matrix):
 if __name__ == "__main__":
     matrix = [[1,1,1],[2,2,2],[3,3,3]]
     print(my_func(matrix))
+
+
+
+Задача №2
+# Напишите функцию принимающую на вход только ключевые параметры и возвращающую словарь,
+# где ключ — значение переданного аргумента, а значение — имя аргумента. 
+# Если ключ не хешируем, используйте его строковое представление.
+
+def some_func(a,b,c):
+    locals_ = locals()
+    print(locals_)
+    return {item:value for value,item in locals_.items()}
+    
+    
+
+if __name__ == "__main__":
+    a,b,c = [1,2,"dsfdsf"]
+    print(some_func(a,b,c))
