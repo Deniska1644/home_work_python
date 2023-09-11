@@ -1,0 +1,11 @@
+Задача №1
+# Напишите функцию для транспонирования матрицы
+  
+def my_func(matrix):
+    trans_matrix = [[matrix[j][i] for j in range(len(matrix))] for i in range(len(matrix[0]))]
+    return trans_matrix
+
+
+if __name__ == "__main__":
+    matrix = [[1,1,1],[2,2,2],[3,3,3]]
+    print(my_func(matrix))
