@@ -50,3 +50,15 @@ if __name__ == "__main__":
     some_str_name = ["Вася","Снежок"]
     
     print(next(dict_gen(some_str,some_int,some_str_name)))
+
+
+Задание №4
+# # ✔ Создайте функцию генератор чисел Фибоначчи (см. Википедию).
+
+def fib(n):
+    a, b = 0, 1
+    for __ in range(n):
+        yield a
+        a, b = b, a + b
+
+print(list((fib(10))))
