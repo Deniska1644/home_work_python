@@ -8,3 +8,45 @@ def gen_func():
     yield (i for i in range(3,100) if i % 2 != 0 and i % 3 != 0 and i % 5 and i % 7 != 0)
 
 print(*next(gen_func()))
+
+
+Задание №2
+
+# ✔ Напишите функцию, которая принимает на вход строку —
+# абсолютный путь до файла. Функция возвращает кортеж из трёх
+# элементов: путь, имя файла, расширение файла.
+
+
+def return_tuple(some_string):
+    tuple_string = some_string.split("/")
+    answer =[]
+    answer.append(some_string)
+    answer.append(tuple_string[-1].split(".")[0])
+    answer.append(tuple_string[-1].split(".")[1])
+    return tuple(answer)
+
+    
+    
+some_string = "/home/user/docs/Letter.txt"
+
+print(return_tuple(some_string))
+
+Задание №3
+
+# Напишите однострочный генератор словаря, который принимает
+# на вход три списка одинаковой длины: имена str, ставка int,
+# премия str с указанием процентов вида «10.25%». В результате
+# получаем словарь с именем в качестве ключа и суммой
+# премии в качестве значения. Сумма рассчитывается
+# как ставка умноженная на процент премии
+    
+def dict_gen(some_str,some_int,some_str_name):
+    yield dict(zip(some_str_name,[x*y for x,y in zip(some_int,[int(i[0:-1]) for i in some_str])]))
+
+    
+if __name__ == "__main__":
+    some_str = ["10%","11%"]
+    some_int = [15,1242]
+    some_str_name = ["Вася","Снежок"]
+    
+    print(next(dict_gen(some_str,some_int,some_str_name)))
