@@ -43,6 +43,55 @@ if __name__ == "__main__":
     print(f"год високосный?: {__leap_year(split_string)}")
 
 
+задача №3,4
+# Известно, что на доске 8×8 можно расставить 8 ферзей так,
+# чтобы они не били друг друга. Вам дана расстановка 8 ферзей на доске, определите, есть ли среди них пара бьющих друг друга. 
+# Программа получает на вход восемь пар чисел, каждое число от 1 до 8 - координаты 8 ферзей. Если ферзи не бьют друг друга верните истину, а если бьют - ложь.
+
+# Напишите функцию в шахматный модуль. Используйте генератор случайных чисел для случайной расстановки ферзей в задаче выше. 
+# Проверяйте различный случайные варианты и выведите 4 успешных расстановки.
+
+def chess_board(number_board,start_position):
+
+    list_position_answer =[]
+    start_position_in_row = start_position[1]
+    if start_position_in_row % 2 == 0:
+        list_position_answer.append(start_position_in_row)
+        for _ in range(number_board-1):
+            if start_position_in_row + 2 > number_board:
+                start_position_in_row = 1
+                list_position_answer.append(start_position_in_row)
+            else:
+                start_position_in_row +=2
+                list_position_answer.append(start_position_in_row)
+        return list(enumerate(list_position_answer,1))
+   
+    else:
+        list_position_answer.append(start_position_in_row)
+        for _ in range(number_board-1):
+            if start_position_in_row + 2 > number_board:
+                start_position_in_row = 2
+                list_position_answer.append(start_position_in_row)
+            else:
+                start_position_in_row +=2
+                list_position_answer.append(start_position_in_row)
+        return list(enumerate(list_position_answer,1))  
+
+def show_board(board):
+    for row in board:
+        a = [0]*len(board)
+        a[row[1]-1] = 1
+        print(*a)
+            
+
+number_board = int(input("введите размерность доски"))
+start_position = [1,1]
+board = chess_board(number_board,start_position)
+
+print(show_board(board))
+print(chess_board(number_board,start_position))
+
+
 
 
     
