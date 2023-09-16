@@ -85,7 +85,7 @@ def show_board(board):
             
 
 number_board = int(input("введите размерность доски \n*количетсво ферзей  = размерности доски*"))
-start_position = [1,1]
+start_position = start_position = list(map(int,(input("введите начальную позицию через слеш").split("/"))))
 board = chess_board(number_board,start_position)
 
 print(show_board(board))
