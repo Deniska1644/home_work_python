@@ -1,0 +1,49 @@
+Задача №1
+
+# Создайте модуль и напишите в нём функцию, которая получает на вход дату в формате DD.MM.YYYY 
+# Функция возвращает истину, если дата может существовать или ложь, если такая дата невозможна. 
+# Для простоты договоримся, что год может быть в диапазоне [1, 9999].
+# Весь период (1 января 1 года - 31 декабря 9999 года) действует Григорианский календарь. 
+# Проверку года на високосность вынести в отдельную защищённую функцию
+
+
+def real_date(split_string:list):
+    month = {
+        "01":"31",
+        "02":"28",
+        "03":"31",
+        "04":"30",
+        "05":"31",
+        "06":"30",
+        "07":"31",
+        "08":"31",
+        "09":"30",
+        "10":"31",
+        "11":"30",
+        "12":"31"
+    }
+
+    if __leap_year == False:
+        return int(split_string[0]) in range(1,int(month.get(split_string[1]))+1) and int(split_string[2]) in range(1,10000)
+    else:
+        if split_string[1] == "02":
+            return int(split_string[0]) in range(1,int(month.get(split_string[1]))+1) and int(split_string[2]) in range(1,10000)
+        else:
+            return int(split_string[0]) in range(1,int(month.get(split_string[1]))+2) and int(split_string[2]) in range(1,10000)
+
+        
+def __leap_year(split_string:list):
+    return int(split_string[2]) % 4 == 0 or int(split_string[2]) % 400 == 0 
+    
+
+if __name__ == "__main__":
+    some_string = "32.12.999999"
+    split_string = some_string.split(".") 
+    
+    print(f"дата существует?: {real_date(split_string)}")
+    print(f"год високосный?: {__leap_year(split_string)}")
+
+
+
+
+    
