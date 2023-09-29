@@ -1,0 +1,60 @@
+# Нахождение корней квадратного уравнения
+# Генерация csv файла с тремя случайными числами в каждой строке. 100-1000 строк.
+# Декоратор, запускающий функцию нахождения корней квадратного уравнения с каждой тройкой чисел из csv файла.
+# Декоратор, сохраняющий переданные параметры и результаты работы функции в json файл.
+# Соберите пакет с играми из тех файлов, что уже были созданы в рамках курса
+
+import csv
+import random
+import math
+import json
+
+
+
+def generate_csv():
+    with open("csv_tble.csv","w",newline = "") as file:
+        csv_writer = csv.writer(file,dialect='excel-tab',quoting=csv.QUOTE_NONNUMERIC)
+    
+        for i in range(10):
+            csv_writer.writerow([random.randint(1,29)for i in range(3)])
+        
+            
+def decor(func):
+    def wraper(*args,**kwargs):
+        global some_list
+        some_list = []
+        with open("csv_tble.csv","r",encoding = "utf-8") as file:
+            csv_reader = csv.reader(file,dialect='excel-tab',quoting=csv.QUOTE_NONNUMERIC)
+            for row in csv_reader:
+                a,b,c = map(int,row)
+                some_list.append(find_roots(a,b,c))
+                print(find_roots(a,b,c))
+        return some_list
+    return wraper
+
+
+def json_file_add(some_list):
+    with open("json_file.json","w",) as file1:
+        result = dict(enumerate(some_list,1))
+        print(result)
+        json.dump(result,file1)
+            
+
+def find_roots(a,b,c):
+    discriminant = b**2 - 4*a*c
+    if discriminant >= 0:
+        x1 = (-b + math.sqrt(discriminant)) / (2*a)
+        x2 = (-b - math.sqrt(discriminant)) / (2*a)
+        return (x1, x2)
+    else:
+        return ("Complex roots",)
+
+@decor
+@json_file_add
+def some_func():
+    pass
+
+generate_csv()
+some_func()
+print(some_list)
+
