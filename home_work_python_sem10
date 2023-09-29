@@ -40,3 +40,24 @@ print(f"{bobik.age}")
 print(f"{bobik.voice}")
 
 
+# Возьмите 1-3 любые задания из прошлых семинаров (например сериализация данных),
+# которые вы уже решали. Превратите функции в методы класса, а параметры в свойства. Задания должны решаться через вызов методов экземпляра.  
+
+class return_tuple:
+    def __init__(self,some_string):
+        self.some_string = some_string
+        
+    def return_tuple_def(self):
+        
+        tuple_string = self.some_string.split("/")
+        answer =[]
+        answer.append(self.some_string)
+        answer.append(tuple_string[-1].split(".")[0])
+        answer.append(tuple_string[-1].split(".")[1])
+        return tuple(answer)    
+            
+
+ret1 = return_tuple("/home/user/docs/Letter.txt")
+print(ret1.return_tuple_def())
+
+
